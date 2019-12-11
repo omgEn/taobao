@@ -1,0 +1,81 @@
+//头部导航start
+.header {
+    min-width: 1190px;
+    background: $gray-color;
+    .nav {
+        height: 35px;
+        font-size: $font-size-s;
+        line-height: 35px;
+    }
+    .nav-left {
+        float: left;
+        div {
+            float: left;
+        }
+        >div{
+            margin-left: 7px;
+            width: 63px;
+            position: relative;
+        }
+        .icon-xiajiantou {
+            font-size: $font-size-s;
+            vertical-align: middle;
+            position: absolute;
+            right: -2px;
+            top: 0;
+        }
+        .login {
+            margin-left: 14px;
+            width: 196px;
+            a {
+                &:first-child {
+                    color: $orange-color;
+                }
+                &:nth-child(2) {
+                    margin:0 16px 0 4px;
+                }
+              
+            }
+        }
+    }
+    .nav-right {
+        float: right;
+        ul {
+            overflow: hidden;
+        }
+        li {
+            float: left;
+        }
+        a {
+            display: block;
+        }
+        .icon-xiajiantou {
+            font-size: $font-size-s;
+            margin-left: 8px;
+        }
+        .icon-buycar,.icon-daohang {
+            color: $orange-color;
+        }
+        .icon-buycar,.icon-soucang,.icon-daohang {
+            font-size: $font-size-s;
+            margin-left: 12px;
+            margin-right: 4px;
+        }
+        li:nth-child(2) span {
+            color: $orange-color;
+        }
+        li:nth-child(4) span {
+            margin-left: $orange-color;
+        }
+        li:nth-child(5) {
+            margin: 0 12px 0 20px;
+            font-size: $font-size-s;
+            color: #666;
+        }
+        li:nth-child(7) {
+            margin-left: 10px;
+        }
+    }
+}
+//头部导航end
+

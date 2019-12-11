@@ -1,0 +1,235 @@
+.content {
+    width: 990px;
+    margin: auto;
+}
+.cart-logo {
+    float: left;
+    margin-top: 20px;
+    a {
+        display: block;
+        width: 188px;
+        height: 50px;
+        background:url('../../images/buycar-logo.PNG');
+        text-indent: -9999px;
+    }
+}
+.tb-header {
+    border: 1px solid red;
+    height: 96px;
+    .search {
+        float: right;
+    }
+    .search-tiggers {
+        width: 74px;
+        position: relative;
+        z-index: 1;
+        left: 3px;
+        top: 3px;
+        height: 29px;
+        border-right: 1px solid #e5e5e5;
+        border-left: 1px solid #f5f5f5;
+    }
+    .change {
+        a {
+            background: #f5f5f5;
+            border-radius: 0;
+            border: 0 none;
+            color: #6b6b6b;
+            font-weight: 400;
+            font-size: $font-size-s;
+            padding: 0;
+            position: absolute;
+        }
+    }
+    .search-panel {
+        position: absolute;
+        width: 515px;
+        height: 29px;
+        border: 3px solid $orange-color-dark;
+        input {
+            border: 0;
+            outline: none;
+        }
+        input:first-child{
+            width: 343px;
+            height: 29px;
+        }
+        input:nth-child(2){
+            width: 93px;
+            height: 35px;
+        }
+    }
+}
+
+// cart-layout start
+.cart-layout {}
+
+.switch-cart {}
+
+.cart-sum {}
+// cart-layout end
+
+// cart main start
+// cart-table-in start
+// cart-table-in end
+
+// 购物车 start
+.item-content {
+    width: 990px;
+    box-sizing: border-box;
+    border: 1px solid #ededed;
+    .td {
+        box-sizing: border-box;
+        padding: 22px 0;
+        float: left;
+        margin-left: 10px;
+    }
+    .td-chk {
+        width: 45px;
+        padding-left: 10px;
+    }
+    .td-item {
+        .item-pic {
+            float: left;
+            img {
+                display: inline-block;
+                width: 80px;
+                height: 80px;
+                border: 1px solid #ededed;
+                box-sizing: border-box;
+            }
+        }
+        .item-info {
+            float: left;
+            margin-left: 10px;
+            width: 100px;
+        }
+    }
+    .td-info {
+        width: 140px;
+    }
+    .td-price {
+        width: 120px;
+        padding-left: 10px;
+    }
+    .td-amout {
+        width: 110px;
+        padding-left: 20px;
+        a {
+            font-size: $font-size-l;
+        }
+    }
+    .td-sum {
+        width: 105px;
+    }
+    .td-op {
+        width: 120px;
+    }
+}
+.cart-table-th {
+    overflow: hidden;
+    color: #3c3c3c;
+    @include lineHeight(50);
+    width: 990px;
+    margin: 0 auto;
+    .th {
+        float: left;
+    }
+    .th-chk {
+        font-size: $font-size-s;
+        text-align: left;
+        position: relative;
+        height: 50px;
+        width: 45px;
+        input {
+            // position: absolute;
+            // left: -20px;
+            // top: -20px;
+        }
+    }
+    .th-item {
+        padding-left: 91px;
+        width: 302px;
+    }
+    .th-info {
+        width: 172px;
+        padding-right: 20px;
+    }
+    .th-price{
+        width: 120px;
+    }
+    .th-amout {
+        width: 120px;
+    }
+    .th-sum {
+        width: 105px;
+    }
+    .th-op{
+        width: 84px;
+        padding: 0 0 0 15px;
+    }
+}
+.float-bar {
+    width: 990px;
+    margin: 0 auto;
+    background: #f4f4f4;
+    th,td {
+        width: 200px;
+        text-align: center;
+        @include lineHeight(80);
+        vertical-align: middle;
+    }
+}
+// .content {
+//     position: relative;
+//     .float-bar {
+//         height: 50px;
+//         margin: auto;
+//         width: 990px;
+//         position: absolute;
+//         overflow: hidden;
+//         bottom: -50px;
+//         background: #e5e5e5;
+//     }
+// }
+// .float-bar {
+//     >div {
+//         float: left;
+//         @include lineHeight(50);
+//     }
+//     .select-all {
+//         width: 70px;
+//         padding-left: 5px;
+//     }
+//     .operations {
+//         width: 280px;
+//         a {
+//             display: inline-block;
+//             width: 120px;
+//             text-align: center;
+//             font-size: $font-size-m;
+//         }
+//     }
+//     .float-bar-right {
+//         margin-left: 180px;
+//         >div {
+//             float: left;
+//             margin-left: 20px;
+//         }
+//         .btn-area {
+//             a {
+//                 display: inline-block;
+//                 width: 120px;
+//                 @include lineHeight(50);
+//                 background: #f40;
+//                 text-align: center;
+//                 font-family: 'Lantinghei SC','Microsoft Yahei';
+//                 font-size: 20px;
+//                 border-radius: 2px;
+//                 color: #fff;
+//             }
+//         }
+//     }
+// }
+// 购物车 end
+// cart main end
