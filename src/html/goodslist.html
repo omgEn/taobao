@@ -92,14 +92,13 @@
         var tds = tr.children; // [td,td,td,td]
         //构建出商品的对象格式
         var product = {
-        "id":tds[0].innerText,
-        "title":tds[1].innerText,
-        "price":tds[2].innerText,
-        "number":1
+            "id":tds[0].innerText,
+            "title":tds[1].innerText,
+            "price":tds[2].innerText,
+            "number":1
         };
         //加入购物车
         car.addCar(product);
-
     }
 </script>          
 </body>

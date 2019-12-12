@@ -12,10 +12,10 @@
 <body>
     <div id="wrap">
         <div id="index">
-            <a href="./login.html">返回首页</a>
+            <a href="../index.html">返回首页</a>
         </div>
         <div id="main">
-            <h4 id="head">名鞋库用户注册</h4>
+            <h4 id="head">淘宝用户注册</h4>
             <div id="content">
                 <div id="left">
                     <form action="#" method="get">
@@ -35,13 +35,13 @@
                         <div class="item">
                             <span class="label">验证码：</span>
                             <input type="text" class="code ipt" name="code">
-                            <img src="//www.s.cn/passport-s-verifyCode.html?1576067956416" border="1" codesrc="//www.s.cn/passport-s-verifyCode.html">
+                            <img id='verifyCode' src="//www.s.cn/passport-s-verifyCode.html?1576067956416" codesrc="//www.s.cn/passport-l-verifyCode.html">
                             <a href="#" class="chg">换个图片</a>
                         </div>
                         <div class="item chk">
                             <input type="checkbox" class="agree" id="agree">
                             我已阅读并同意
-                            <a href="#">名鞋库会员注册协议</a>。
+                            <a href="#">淘宝会员注册协议</a>。
                         </div>
                         <div class="item">
                             <input type="submit" value="注册新用户" id="submit">
@@ -51,7 +51,7 @@
                 </div>
                 <div id="right">
                     <span>已经有名鞋库账号？</span>
-                    <button>现在登录</button>
+                    <button><a href='./login.html'>现在登录</a</button>
                     <img src="../images/singupmy.png" alt="ad">
                 </div>
             </div>
@@ -79,9 +79,8 @@
         var agreeBox = document.getElementById('agree');
         if (agreeBox.checked) {
             if(nameCheck(unameInp)&& verifyPasswd(pwd,repwd)){
-                console.log(1);
-                document.cookie=('tbname',unameInp.value);
-                document.cookie=('tbpwd',pwd.value);
+               localStorage.setItem('tbname',unameInp.value);
+               localStorage.setItem('tbpwd',pwd.value);
             }
         } else {
             alert("请阅读用户注册协议");
@@ -133,5 +132,23 @@
         error.innerHTML = '';
         return  true;
     }
+    // 验证码换图片
+    function changeImg(){
+        var aBtn = document.querySelector('.chg');
+        var verifyCode = document.querySelector('verifyCode');
+        var src = verifyCode.getAttribute('codesrc');
+        aBtn.onclick = function(){
+            verifyCode.src = src+'';
+            return false;
+        }
+    }
+    (function(i,s,o,g,r,a,m){
+        i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();
+                a=s.createElement(o),m=s.getElementsByTagName(o)[0];
+                a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+
 </script>
 </html>

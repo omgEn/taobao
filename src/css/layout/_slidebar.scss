@@ -27,6 +27,14 @@
             background-image: linear-gradient(135deg,#ff971b,#ff5000);
         }
     }
+    .robot {
+        position: absolute;
+        width: 240px;
+        height: 200px;
+        top: 50px;
+        right: 56px;
+        border: 1px solid $orange-color;
+    }
 }
 .slideScroll {
     position: fixed;

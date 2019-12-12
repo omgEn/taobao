@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width, initial-scale=1.0"><meta http-equiv=X-UA-Compatible content="ie=edge"><title>用户登录</title><style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #login-box {
+            display: block;
+            width: 300px;
+            padding: 25px;
+            color: #6c6c6c;
+            background: #fff;
+            position: relative;
+            margin: 200px auto;
+            border: 1px solid #efefef;
+            border-radius: 2px;
+            box-shadow: 0 0 8px #E5E5E5;
+        }
+
+        #login-box .login-title {
+            display: inline-block;
+            width: 100%;
+            height: 18px;
+            line-height: 18px;
+            font-size: 16px;
+            color: #3c3c3c;
+            margin-top: 9px;
+            padding-bottom: 8px;
+            font-weight: 700;
+        }
+
+        #login-box .field {
+            width: 100%;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        #login-box input {
+            display: inline-block;
+            width: 100%;
+            font-size: 14px;
+            line-height: 18px;
+            height: 18px;
+            padding: 11px 0;
+            text-indent: 1em;
+            border: 1px solid #ddd;
+        }
+
+        #login-box .submit {
+            display: inline-block;
+            width: 100%;
+            height: 42px;
+            border: 0;
+            overflow: hidden;
+            vertical-align: middle;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            background: #f40;
+            border-radius: 3px;
+            cursor: pointer;
+            zoom: 1;
+        }
+    </style></head><body><div id=login-box><div class=login-title>用户登录</div><form method=get class=login-form><div class="username-field field"><span></span> <input type=text placeholder=邮箱/手机号 name=username></div><div class="password-field field"><span></span> <input type=password name=password></div><div class=field><input type=button class=submit value="登 录"></div></form></div><script>
+    var submitBtn = document.querySelector('.submit');
+    var un = document.querySelector('[type=text]');
+    var pw = document.querySelector('[type=password]');
+    submitBtn.onclick = function(){
+        if(un.value==localStorage.getItem('tbname')&&pw.value==localStorage.getItem('tbpwd')){
+            alert('登录成功');
+            window.location.href = '../index.html';
+        } else {
+            if (un.value==localStorage.getItem('tbname')){
+                alert('密码输入错误，请重新输入');
+            } else {
+                alert('此用户名没有注册过，请注册');
+                var person=prompt("是否去注册界面","是");
+                if (person=="是"){
+                    window.location.href='http://localhost:88/html/register.html';
+                }
+            }
+        } 
+    }
+</script></body></html>

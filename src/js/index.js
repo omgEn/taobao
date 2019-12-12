@@ -1,18 +1,92 @@
-
-
-// 菜单悬浮事件
-var menuOne = document.getElementsByClassName('service-cd');
-var menuTwo = document.getElementsByClassName('service-float');
-menuOne.onmouseenter = function(){
-    menuTwo.display = "block";
+// 二级菜单 start
+var menuOne = document.querySelector('.main-left');
+var menuTwo = document.querySelector('.service-float');
+menuOne.onmouseenter = function(e){
+	menuTwo.style.display = "block";
+	showMenu();
+	var e = window.event||e;
+	cancelBubble(e);
+	
 }
 menuOne.onmouseleave = function(){
-    menuTwo.display = "none";
+    menuTwo.style.display = "none";
 }
-function showMenoTwo() {
-    
+function showMenu() {
+	var $str="";
+	// jquery写的
+	$.ajax({
+		type:"get",
+		datatype:"jsonp",
+		url:"./data/list.json",
+		success:function(data){
+			$.each(data,function(index,value){
+				var $arr = value.name.split(" ");
+					$str+=` <li  class="hot-line-li clearfix">
+					<div class="hot-line">
+					<div class="line-title">
+						<p class="line-text">
+							${value.category}
+						</p>
+					</div>
+					
+					<div class="line-con">`;
+					
+					for(var $i = 0;$i<$arr.length;$i++){
+						$str+=` <a href="javascript:;">${$arr[$i]}</a>`;    
+					}
+					$str+=`</div>
+					<div class="line-dotted"></div>
+				</div>
+				</li>`;    
+			})
+			$('.hot-line-ul').each(function(index,element){
+				$(element).html($str);
+			})
+		}
+	})
 }
-//轮播图
+// 二级菜单 end
+
+// 搜索行 start
+var search = document.querySelector('#search');
+var searchInp = search.querySelector('input');
+var searchFlag = true;//判断用户是否输入完成,默认是完成的
+searchInp.addEventListener('compositionstart',function(){
+	searchFlag = false;
+})
+searchInp.addEventListener('compositionend',function(){
+	searchFlag = true;
+})
+searchInp.oninput = function(){
+	setTimeout(function(){
+		if(searchFlag){
+			var keyword = searchInp.value;//输入的关键字
+			ajax({
+				dataType:'jsonp',
+				url:'https://suggest.taobao.com/sug',
+				data:{
+					code:"utf-8",
+					q:keyword,
+					_ksTS:"1563970517892_385",
+					k:1,
+					area:"c2c",
+					bucketid:10
+				},
+				success:function(data){
+					var result = data.result;//是一个数组
+					var str = "";
+					result.forEach(function(value){
+						str+="<li>"+value[0]+"</li>"
+					})
+					document.querySelector('#search-box').innerHTML = str;
+				}
+			})
+		}
+	},0)
+}
+// 搜索行 end
+
+//轮播图 start
 var mySwiper1 = new Swiper ('#swiper1', {
 	direction: 'horizontal', // 垂直切换选项
 	loop: true, // 循环模式选项
@@ -77,7 +151,9 @@ mySwiper2.el.onmouseout=function(){
 	mySwiper2.navigation.$nextEl.addClass('hide');
 	mySwiper2.navigation.$prevEl.addClass('hide');
 } 
-// clo-right
+// 轮播图 end
+
+// clo-right start
 var noticeUl = document.getElementById('notice-ul');
 var noticeLis = noticeUl.getElementsByTagName('li');
 var noticeDiv = document.getElementById('notice-div');
@@ -92,8 +168,9 @@ for(var i=0; i<noticeLis.length; i++) {
         ndUl[index].style.display = "block";
     }
 }
+// clo-right end
 
-//slidebar
+//slidebar start 
 var slidebar = document.getElementById('slidebar');
 var aSlidebar = slidebar.getElementsByTagName('a');
 document.onscroll = function(){
@@ -116,11 +193,12 @@ slidebar.onclick = function(e){
 		document.documentElement.scrollTop = document.querySelector('.buy').offsetTop;
 	}
 	if(target.className=='fixedtool-3'){
-		document.documentElement.scrollTop = document.querySelector('.buy').offsetTop;
+		document.documentElement.scrollTop = document.querySelector('.buy').offsetTop+document.querySelector('.buy').offsetHeight;
 	}
-	if(target.className=='fixedtool-3'){
+	if(target.className=='fixedtool-4'){
 		document.documentElement.scrollTop = 0;
 	}
+	return false;
 }
 //scroll 页面被卷曲的高度
 function scroll(){
@@ -206,3 +284,13 @@ function ajax(option){
 //     jsonp:如果使用script请求数据，传给后台的回调函数名是callback
 //     cb:如果使用script标签请求数据，传给后台的回调函数名，默认是随机。
 // })
+// 阻止冒泡
+function cancelBubble(e) {
+	var e = e || window.enent;
+	if (e && e.stopPropagation) {
+		e.stopPropagation();//非IE浏览器
+	} else {
+		//IE浏览器，IE11以下
+		e.cancelBubble = true;
+	}	
+}
